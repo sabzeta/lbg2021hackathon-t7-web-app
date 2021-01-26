@@ -1,8 +1,10 @@
 import './App.css';
 import React from 'react';
+import { TextField } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import CameraIcon from '@material-ui/icons/PhotoCamera';
+import SearchIcon from '@material-ui/icons/Search';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -48,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const cards = [1, 2, 3];
 
 
 function App() {
@@ -75,9 +77,12 @@ function App() {
           <div className={classes.heroButtons}>
             <Grid container spacing={2} justify="center">
               <Grid item>
-                <Button variant="contained" color="primary">
-                  Search
-                </Button>
+                <form className={classes.root} noValidate autoComplete="off">
+                  <TextField id="standard-basic" label="Search" variant="outlined" />
+                  <Button variant="contained" color="primary" type="submit">
+                    <SearchIcon className={classes.icon} />
+                  </Button>
+                </form>
               </Grid>
             </Grid>
           </div>
@@ -119,10 +124,10 @@ function App() {
     {/* Footer */}
     <footer className={classes.footer}>
       <Typography variant="h6" align="center" gutterBottom>
-        Footer
+        Staycation 
       </Typography>
       <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-        Something here to give the footer a purpose!
+        This demo web site was built for LBG CDO 2021 CGP Hackathon by team 7!
       </Typography>
     </footer>
     {/* End footer */}
