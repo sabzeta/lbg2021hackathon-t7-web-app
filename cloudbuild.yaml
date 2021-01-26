@@ -8,4 +8,4 @@ steps:
 artifacts:
   objects:
     location: ['gs://lbghack2021-t7-web-app']
-    paths: ['/build/*']
+    paths: [['/build/*']]
