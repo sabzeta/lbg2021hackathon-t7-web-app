@@ -1,6 +1,6 @@
 import './App.css';
-import React from 'react';
-import { TextField } from '@material-ui/core';
+import React, { useState } from 'react';
+import { TextField, Link } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import CameraIcon from '@material-ui/icons/PhotoCamera';
@@ -12,8 +12,10 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import Map from './MapComponent';
-import TopList from './TopListComponent';
+import {
+  BrowserRouter as Router,
+} from "react-router-dom";
+import AppRoutes from './AppRoutes';
 
 const theme = createMuiTheme({
   palette: {
@@ -45,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
   searchComponent: {
     margin: theme.spacing(1),
+    height: 56,
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
@@ -68,17 +71,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App() {
+  const [location, setLocation] = useState('');
   const classes = useStyles();
 
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
     <CssBaseline />
+    <Router>
+
     <AppBar position="relative">
       <Toolbar>
         <CameraIcon className={classes.icon} />
-        <Typography variant="h6" color="inherit" noWrap>
-          Staycation - where to?
+        <Typography variant="h6" noWrap>
+          <Link to="/" color="inherit">
+            Staycation - where to?
+          </Link>
         </Typography>
       </Toolbar>
     </AppBar>
@@ -96,10 +104,14 @@ function App() {
             <Grid container spacing={2} justify="center">
               <Grid item>
                 <form className={classes.root} noValidate autoComplete="off">
-                  <TextField id="standard-basic" label="Search" variant="outlined" className={classes.searchComponent} />
-                  <Button size="big" variant="contained" color="primary" type="submit" className={classes.searchComponent} >
+                  <TextField id="standard-basic" label="Search for a UK city" variant="outlined" className={classes.searchComponent} 
+                    value={location} onChange={(e) => setLocation(e.target.value)}
+                  />
+                  <Link to={`/results/${location}`}>
+                  <Button size="large" variant="contained" color="primary" type="submit" className={classes.searchComponent} >
                     <SearchIcon className={classes.icon} />
                   </Button>
+                  </Link>
                 </form>
               </Grid>
             </Grid>
@@ -109,11 +121,11 @@ function App() {
       <Container className={classes.cardGrid} maxWidth="md">
         {/* End hero unit */}
         <Grid container spacing={4}>
-          <Map />
-          <TopList />
+          <AppRoutes />
         </Grid>
       </Container>
     </main>
+    </Router>
     {/* Footer */}
     <footer className={classes.footer}>
       <Typography variant="h6" align="center" gutterBottom>
