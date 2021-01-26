@@ -7,5 +7,5 @@ steps:
   args: ['run', 'build']
 artifacts:
   objects:
-    location: ['gs://lbghack2021-t7-web-app']
-    paths: [['/build/*']]
+    location: 'gs://lbghack2021-t7-web-app'
+    paths: ['/build/*']
