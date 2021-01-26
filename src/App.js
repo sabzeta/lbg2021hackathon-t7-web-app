@@ -15,8 +15,24 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#4ab77c',
+      main: '#00864f',
+      dark: '#005826',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff8a50',
+      main: '#ff5722',
+      dark: '#c41c00',
+      contrastText: '#000',
+    },
+  },
+});
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -26,8 +42,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(8, 0, 6),
   },
-  heroButtons: {
+  search: {
     marginTop: theme.spacing(4),
+  },
+  searchComponent: {
+    margin: theme.spacing(1),
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
@@ -58,6 +77,7 @@ function App() {
 
   return (
     <React.Fragment>
+      <ThemeProvider theme={theme}>
     <CssBaseline />
     <AppBar position="relative">
       <Toolbar>
@@ -72,14 +92,19 @@ function App() {
       <div className={classes.heroContent}>
         <Container maxWidth="sm">
           <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-          Staycation - where to?
+          STAYCATION 
           </Typography>
-          <div className={classes.heroButtons}>
+          <Typography component="h3" variant="h3" align="center" color="textPrimary" gutterBottom>
+            WHERE TO?
+          </Typography>
+          <div className={classes.search}>
             <Grid container spacing={2} justify="center">
               <Grid item>
                 <form className={classes.root} noValidate autoComplete="off">
                   <TextField id="standard-basic" label="Search" variant="outlined" />
                   <Button variant="contained" color="primary" type="submit">
+                  <TextField id="standard-basic" label="Search" variant="outlined" className={classes.searchComponent} />
+                  <Button size="big" variant="contained" color="primary" type="submit" className={classes.searchComponent} >
                     <SearchIcon className={classes.icon} />
                   </Button>
                 </form>
@@ -131,6 +156,8 @@ function App() {
       </Typography>
     </footer>
     {/* End footer */}
+</ThemeProvider>
+
   </React.Fragment>
   );
 }
