@@ -1,18 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import TopList from '../TopListComponent';
-import Map from '../MapComponent';
+import TopList from '../components/TopListComponent';
+import Map from '../components/MapComponent';
 
 const useStyles = makeStyles((theme) => ({
-    cardGrid: {
-      paddingTop: theme.spacing(8),
-      paddingBottom: theme.spacing(8),
-    },
-    card: {
-      height: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-    },
+
 }));
 
   

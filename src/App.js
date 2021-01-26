@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
-import { TextField, Link } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import CameraIcon from '@material-ui/icons/PhotoCamera';
@@ -14,6 +14,7 @@ import Container from '@material-ui/core/Container';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import {
   BrowserRouter as Router,
+  Link
 } from "react-router-dom";
 import AppRoutes from './AppRoutes';
 
@@ -37,6 +38,10 @@ const theme = createMuiTheme({
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
+  },
+  homeLink: {
+    color: theme.palette.primary.contrastText,
+    textDecoration: 'none',
   },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
@@ -83,11 +88,11 @@ function App() {
     <AppBar position="relative">
       <Toolbar>
         <CameraIcon className={classes.icon} />
-        <Typography variant="h6" noWrap>
-          <Link to="/" color="inherit">
-            Staycation - where to?
-          </Link>
-        </Typography>
+        <Link to="/" className={classes.homeLink}>
+          <Typography variant="h6">
+              Staycation - where to?
+          </Typography>
+        </Link>
       </Toolbar>
     </AppBar>
     <main>
@@ -103,16 +108,14 @@ function App() {
           <div className={classes.search}>
             <Grid container spacing={2} justify="center">
               <Grid item>
-                <form className={classes.root} noValidate autoComplete="off">
-                  <TextField id="standard-basic" label="Search for a UK city" variant="outlined" className={classes.searchComponent} 
-                    value={location} onChange={(e) => setLocation(e.target.value)}
-                  />
-                  <Link to={`/results/${location}`}>
+                <TextField id="standard-basic" label="Search for a UK city" variant="outlined" className={classes.searchComponent} 
+                  value={location} onChange={(e) => { setLocation(e.target.value); console.log(e.target.value)}}
+                />
+                <Link to={`/results/${location}`}>
                   <Button size="large" variant="contained" color="primary" type="submit" className={classes.searchComponent} >
                     <SearchIcon className={classes.icon} />
                   </Button>
-                  </Link>
-                </form>
+                </Link>
               </Grid>
             </Grid>
           </div>
