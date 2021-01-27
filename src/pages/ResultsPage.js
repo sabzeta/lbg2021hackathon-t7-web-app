@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
   useRouteMatch,
 } from "react-router-dom";
+import HotelsList from '../components/HotelsListComponent';
 import Twitter from '../components/TwitterComponent';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
@@ -34,14 +35,19 @@ export default function ResultsPage() {
 
     return (
       <>
-        
         <Grid item key={1} xs={12} sm={6} md={4}>
+          <Card className={classes.card}>
+            <HotelsList place={params.place} />
+          </Card>
+        </Grid>
+        
+        <Grid item key={2} xs={12} sm={6} md={4}>
           <Card className={classes.card}>
             <Twitter place={params.place} />
           </Card>
         </Grid>
 
-        <Grid item key={1} xs={12} sm={6} md={4}>
+        <Grid item key={3} xs={12} sm={6} md={4}>
           <Card className={classes.card}>
             <CardContent className={classes.cardContent}>
               <Typography gutterBottom variant="h5" component="h2">
