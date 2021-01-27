@@ -44,6 +44,7 @@ export default function HotelsList({ place }) {
           <Typography gutterBottom variant="h5" component="h2">
           What hotels to stay at?
           </Typography>
+          <div style={{maxHeight: 300, overflowY: 'scroll'}}>
           {list.map((item, index) => (
             <ListItem component="a" key={index}
               href={`https://www.booking.com/searchresults.en-gb.html?&ss=${item.Name}%20${place}`}
@@ -51,6 +52,7 @@ export default function HotelsList({ place }) {
               <ListItemText>{item.Name}</ListItemText>
             </ListItem>
           ))}
+          </div>
       </CardContent>
     );
 };
