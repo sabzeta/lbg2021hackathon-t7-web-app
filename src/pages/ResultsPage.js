@@ -30,12 +30,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
   
+String.prototype.capitalize = function() {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
 export default function ResultsPage() {
     const classes = useStyles();
     let { params } = useRouteMatch("/results/:place");
 
     return (
       <>
+        <div style={{width: '100%'}}>
+          <Typography gutterBottom variant="h3" component="h4">
+            We found this information about {params.place.capitalize()}:
+          </Typography>
+        </div>
+
         <Grid item key={1} xs={12} sm={6} md={3}>
           <Card className={classes.card}>
             <Twitter place={params.place} />

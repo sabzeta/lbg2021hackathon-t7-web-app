@@ -30,11 +30,11 @@ export default function Twitter({ place }) {
 
     return (
       <CardContent className={classes.cardContent}>
+          <Typography gutterBottom variant="h5" component="h2">
+            COVID-19 stats
+          </Typography>
         {value && (
           <>
-            <Typography gutterBottom variant="h5" component="h2">
-            COVID-19 stats
-            </Typography>
             <Typography variant="h6" component="h4">
               Latest results date: {value.Specimen_date?.value}
             </Typography>
