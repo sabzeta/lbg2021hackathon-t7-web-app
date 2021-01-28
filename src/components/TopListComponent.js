@@ -39,8 +39,8 @@ export default function TopList() {
               Top places to visit
               </Typography>
               {list.map((item, index) => (
-                <Link key={index} className={classes.link} to={`/results/${item.toLowerCase()}`}>
-                  <Typography>{item}</Typography>
+                <Link key={index} className={classes.link} to={`/results/${item.Area_name.toLowerCase()}`}>
+                  <Typography>{item.Area_name}</Typography>
                 </Link>
               ))}
           </CardContent>
