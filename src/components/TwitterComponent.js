@@ -36,7 +36,7 @@ export default function Twitter({ place }) {
         const response = await axios.get(`https://lbghack2021team7.nw.r.appspot.com/sentiment?place=${place.toLowerCase()}`);
 
         const val = Object.values(response.data.pop());
-        const sentiment = Math.round(val * 100) / 100
+        const sentiment = Math.round(val * 100) / 100;
         setValue(sentiment);
       };
       getList();
