@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import viz from '../media/viz.png';
 
 const useStyles = makeStyles((theme) => ({
     cardGrid: {
@@ -34,9 +35,10 @@ export default function Map() {
                 <Typography gutterBottom variant="h5" component="h2">
                 Map
                 </Typography>
-                <Typography>
-                This will be a map integration
-                </Typography>
+                <a href="https://datastudio.google.com/reporting/2016b160-cb06-4733-9382-e8bbf6062252/page/ZW7yB"
+                  target="_blank" rel="noopener">
+                  <img src={viz} alt="Logo" />
+                </a>
             </CardContent>
             </Card>
         </Grid>
