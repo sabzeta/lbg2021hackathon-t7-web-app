@@ -34,7 +34,10 @@ export default function Twitter({ place }) {
     useEffect(() => {
       const getList = async () => {
         const response = await axios.get(`https://lbghack2021team7.nw.r.appspot.com/sentiment?place=${place.toLowerCase()}`);
-        setValue(response.data);
+
+        const val = Object.values(response.data.pop());
+        const sentiment = Math.round(val * 100) / 100
+        setValue(sentiment);
       };
       getList();
     }, [place])
