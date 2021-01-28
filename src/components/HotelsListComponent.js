@@ -33,7 +33,7 @@ export default function HotelsList({ place }) {
 
     useEffect(() => {
       const getList = async () => {
-        const response = await axios.get(`https://lbghack2021team7.nw.r.appspot.com/hotels?place=${place}`);
+        const response = await axios.get(`https://lbghack2021team7.nw.r.appspot.com/hotels?place=${place.toLowerCase()}`);
         setList(response.data);
       };
       getList();

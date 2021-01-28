@@ -22,7 +22,7 @@ export default function Twitter({ place }) {
 
     useEffect(() => {
       const getList = async () => {
-        const response = await axios.get(`https://lbghack2021team7.nw.r.appspot.com/covid?place=${place}`);
+        const response = await axios.get(`https://lbghack2021team7.nw.r.appspot.com/covid?place=${place.toLowerCase()}`);
         setValue(response.data[0]);
       };
       getList();
