@@ -33,7 +33,7 @@ export default function Twitter({ place }) {
 
     useEffect(() => {
       const getList = async () => {
-        const response = await axios.get(`https://europe-west2-lbghack2021team7.cloudfunctions.net/web-api-sentiment?place=${place}`);
+        const response = await axios.get(`https://lbghack2021team7.nw.r.appspot.com/sentiment?place=${place}`);
         setValue(response.data);
       };
       getList();
