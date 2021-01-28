@@ -39,6 +39,9 @@ export default function Twitter({ place }) {
               Latest results date: {value.Specimen_date?.value}
             </Typography>
             <ListItem>
+              <ListItemText>Daily lab confirmed cases: {value.Daily_lab_confirmed_cases}</ListItemText>
+            </ListItem>
+            <ListItem>
               <ListItemText>Cumulative lab confirmed cases: {value.Cumulative_lab_confirmed_cases}</ListItemText>
             </ListItem>
             <ListItem>
