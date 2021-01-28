@@ -1,10 +1,7 @@
 import './App.css';
-import React, { useState } from 'react';
-import { TextField } from '@material-ui/core';
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
 import CameraIcon from '@material-ui/icons/PhotoCamera';
-import SearchIcon from '@material-ui/icons/Search';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -17,6 +14,7 @@ import {
   Link
 } from "react-router-dom";
 import AppRoutes from './AppRoutes';
+import Header from './components/HeaderComponent';
 
 const theme = createMuiTheme({
   palette: {
@@ -76,7 +74,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App() {
-  const [location, setLocation] = useState('');
   const classes = useStyles();
 
   return (
@@ -95,39 +92,17 @@ function App() {
         </Link>
       </Toolbar>
     </AppBar>
+
     <main>
-      {/* Hero unit */}
-      <div className={classes.heroContent}>
-        <Container maxWidth="sm">
-          <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-          STAYCATION 
-          </Typography>
-          <Typography component="h3" variant="h3" align="center" color="textPrimary" gutterBottom>
-            WHERE TO?
-          </Typography>
-          <div className={classes.search}>
-            <Grid container spacing={2} justify="center">
-              <Grid item>
-                <TextField id="standard-basic" label="Search for a UK city" variant="outlined" className={classes.searchComponent} 
-                  value={location} onChange={(e) => { setLocation(e.target.value); console.log(e.target.value)}}
-                />
-                <Link to={`/results/${location}`}>
-                  <Button size="large" variant="contained" color="primary" type="submit" className={classes.searchComponent} >
-                    <SearchIcon className={classes.icon} />
-                  </Button>
-                </Link>
-              </Grid>
-            </Grid>
-          </div>
-        </Container>
-      </div>
+      <Header />
+
       <Container className={classes.cardGrid} maxWidth="lg">
-        {/* End hero unit */}
         <Grid container spacing={4}>
           <AppRoutes />
         </Grid>
       </Container>
     </main>
+
     </Router>
     {/* Footer */}
     <footer className={classes.footer}>
