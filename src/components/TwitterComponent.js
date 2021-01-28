@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   
 export default function Twitter({ place }) {
     const classes = useStyles();
-    const [value, setValue] = useState([]);
+    const [value, setValue] = useState(42);
 
     useEffect(() => {
       const getList = async () => {
